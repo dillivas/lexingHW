@@ -3,17 +3,18 @@
 int num_lines = 1;
 %}
 %%
-[0-9]\.[0-9]	{printf("FLOAT \n");}
-[0-9]		{printf("INT \n");}
-(SET_COLOR)	{printf("SET_COLOR \n");}
-(RECTANGLE)	{printf("RECTANGLE \n");}
-(CIRCLE)	{printf("CIRCLE \n");}
-(LINE)		{printf("LINE \n");}
-(POINT)		{printf("POINT \n");}
-(;)		{printf("END_STATEMENT \n");}
-(END)		{printf("END \n");}
+[0-9]+\.[0-9]+	{printf("FLOAT \n");}
+[0-9]+		{printf("INT \n");}
+set_color	{printf("SET_COLOR \n");}
+rectangle	{printf("RECTANGLE \n");}
+circle		{printf("CIRCLE \n");}
+line		{printf("LINE \n");}
+point		{printf("POINT \n");}
+;		{printf("END_STATEMENT \n");}
+end		{printf("END \n");}
 \n		++num_lines;
-\t|\s|\n	;
+[ |\t|\n]	;
+
 .	{printf("INCORRECT INPUT AT LINE %d\n", num_lines);}
 	
 %%
